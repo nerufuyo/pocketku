@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:pocketku/common/format.dart';
+import 'package:pocketku/data/utils/format.dart';
 import 'package:pocketku/presentation/screens/notification_screen.dart';
 import 'package:pocketku/presentation/screens/settings_screen.dart';
 import 'package:pocketku/presentation/styles/pallet.dart';

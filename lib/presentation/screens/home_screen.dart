@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:pocketku/common/format.dart';
+import 'package:pocketku/data/utils/format.dart';
 import 'package:pocketku/data/repository/repository.dart';
 import 'package:pocketku/presentation/screens/transaction_screen.dart';
 import 'package:pocketku/presentation/styles/pallet.dart';
 import 'package:pocketku/presentation/styles/typography.dart';
 import 'package:pocketku/presentation/widgets/button_widget.dart';
-import 'package:pocketku/presentation/widgets/custom_bottom_sheet.dart';
+import 'package:pocketku/presentation/widgets/bottom_sheet_widget.dart';
 import 'package:pocketku/presentation/widgets/header_widget.dart';
+import 'package:pocketku/presentation/widgets/icon_text_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -92,25 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: headline1.copyWith(color: warning),
               ),
               IconButton(
-                onPressed: () {
-                  setState(() {
-                    showModalBottomSheet(
-                      context: context,
-                      backgroundColor: primary50,
-                      builder: (context) => CustomButtomSheet(
-                        balance: 'Rp ${formattedCurrency(
-                          int.parse(userData['current_balance'] ?? '0'),
-                        )}',
-                        income: '+ Rp ${formattedCurrency(
-                          int.parse(userData['income'] ?? '0'),
-                        )}',
-                        expense: '- Rp ${formattedCurrency(
-                          int.parse(userData['outcome'] ?? '0'),
-                        )}',
-                      ),
-                    );
-                  });
-                },
+                onPressed: () => showDetailBalance(context) ,
                 icon: const Icon(
                   Iconsax.info_circle,
                   color: warning,
@@ -119,6 +102,56 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Future<dynamic> showDetailBalance(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => BottomSheetWidget(
+        balance: 'Rp${formattedCurrency(
+          int.parse(userData['current_balance'] ?? '0'),
+        )}',
+        income:
+            "+ Rp${formattedCurrency(int.parse(userData['income'] ?? '0'))}",
+        expense:
+            "- Rp${formattedCurrency(int.parse(userData['outcome'] ?? '0'))}",
+        widget: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: List.generate(
+            transactionData[0]['transactions_list'].length,
+            (colIndex) => Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(2, (rowIndex) {
+                final transaction =
+                    transactionData[0]['transactions_list'][colIndex];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: IconTextWidget(
+                    icon: rowIndex == 0
+                        ? transaction['transaction_logo'] != ''
+                            ? transaction['transaction_logo']
+                            : Iconsax.empty_wallet_add
+                        : null,
+                    title: rowIndex == 0
+                        ? transaction['transaction_description']
+                        : '${transaction['transaction_type'].contains('Income') ? '+' : '-'} Rp${formattedCurrency(transaction['transaction_amount'])}',
+                    color: rowIndex == 0
+                        ? secondary40
+                        : transaction['transaction_type'].contains('Income')
+                            ? success
+                            : danger,
+                  ),
+                );
+              }),
+            ),
+          ),
+        ),
       ),
     );
   }

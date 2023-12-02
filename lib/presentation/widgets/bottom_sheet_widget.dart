@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:pocketku/data/utils/constant.dart';
 import 'package:pocketku/presentation/styles/pallet.dart';
 import 'package:pocketku/presentation/styles/typography.dart';
+import 'package:pocketku/presentation/widgets/icon_text_widget.dart';
 
-class CustomButtomSheet extends StatelessWidget {
-  const CustomButtomSheet({
+class BottomSheetWidget extends StatefulWidget {
+  const BottomSheetWidget({
     super.key,
     required this.balance,
     required this.income,
     required this.expense,
+    required this.widget,
   });
 
   final String balance;
   final String income;
   final String expense;
+  final Widget widget;
 
+  @override
+  State<BottomSheetWidget> createState() => _BottomSheetWidgetState();
+}
+
+class _BottomSheetWidgetState extends State<BottomSheetWidget> {
   @override
   Widget build(BuildContext context) {
     return StatefulBuilder(
@@ -21,7 +31,7 @@ class CustomButtomSheet extends StatelessWidget {
         child: Container(
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            color: primary50,
+            color: background,
             borderRadius: BorderRadius.circular(28),
           ),
           padding: const EdgeInsets.symmetric(
@@ -34,10 +44,18 @@ class CustomButtomSheet extends StatelessWidget {
             children: [
               topSliderButton(context),
               Text(
-                'My Detail Balance',
+                'Detail Balance',
                 style: headline2.copyWith(color: white),
               ),
-              const SizedBox(height: 16),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: warning,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                margin: const EdgeInsets.symmetric(vertical: 16),
+              ),
               customSubtitle(
                 title: 'Current Balance',
                 titleColor: warning,
@@ -50,31 +68,34 @@ class CustomButtomSheet extends StatelessWidget {
                   children: List.generate(
                     3,
                     (colIndex) => Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2),
+                      padding: const EdgeInsets.symmetric(vertical: 6),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: List.generate(
                           2,
-                          (rowIndex) => Text(
-                            colIndex == 0
-                                ? rowIndex == 0
-                                    ? 'Total Balance'
-                                    : balance
-                                : colIndex == 1
-                                    ? rowIndex == 0
-                                        ? 'Total Income'
-                                        : income
-                                    : rowIndex == 0
-                                        ? 'Total Expense'
-                                        : expense,
-                            style: subtitle2.copyWith(
-                              color: colIndex == 0
-                                  ? white
-                                  : colIndex == 1
-                                      ? success
-                                      : danger,
-                            ),
+                          (rowIndex) => IconTextWidget(
+                            icon: rowIndex == 0
+                                ? colIndex == 0
+                                    ? Iconsax.wallet
+                                    : colIndex == 1
+                                        ? Iconsax.arrow_down_2
+                                        : Iconsax.arrow_up_1
+                                : null,
+                            title: rowIndex == 0
+                                ? detailCurrentBalance[colIndex]
+                                : colIndex == 0
+                                    ? widget.balance
+                                    : colIndex == 1
+                                        ? widget.income
+                                        : widget.expense,
+                            color: rowIndex == 1
+                                ? colIndex == 1
+                                    ? success
+                                    : colIndex == 2
+                                        ? danger
+                                        : white
+                                : secondary40,
                           ),
                         ),
                       ),
@@ -92,8 +113,12 @@ class CustomButtomSheet extends StatelessWidget {
                 ),
               ),
               customSubtitle(
-                title: 'Monthly Data',
+                title: 'Recent Transaction',
                 titleColor: success,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 24, top: 4),
+                child: widget.widget,
               ),
             ],
           ),
@@ -111,8 +136,8 @@ class CustomButtomSheet extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          width: 16,
-          height: 16,
+          width: 12,
+          height: 12,
           decoration: BoxDecoration(
             color: titleColor,
             shape: BoxShape.circle,
@@ -121,7 +146,7 @@ class CustomButtomSheet extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           title,
-          style: headline5.copyWith(color: white),
+          style: headline4.copyWith(color: white),
         ),
       ],
     );
@@ -133,7 +158,7 @@ class CustomButtomSheet extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.125,
         height: 8,
         decoration: BoxDecoration(
-          color: warning,
+          color: primary40,
           borderRadius: BorderRadius.circular(16),
         ),
         margin: const EdgeInsets.only(top: 8, bottom: 24),

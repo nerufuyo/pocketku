@@ -1,4 +1,4 @@
-import 'package:pocketku/common/enum.dart';
+import 'package:pocketku/data/utils/enum.dart';
 
 class Transactions {
   final String transactionsId;
