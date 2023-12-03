@@ -1,0 +1,125 @@
+{
+    "message": "success",
+    "status": 200,
+    "data": [
+        {
+            "transactions_id": "TRXS1",
+            "transactions_year": "2019",
+            "transactions_month": "01",
+            "total_income": 81054520,
+            "total_outcome": 1677510,
+            "total_balance": 79377010,
+            "transactions_list": [
+                {
+                    "transaction_id": "TRX0101",
+                    "transaction_date": "2019-01-01 00:00:00",
+                    "transaction_description": "Pembayaran Tokopedia Card",
+                    "transaction_category": "Debit",
+                    "transaction_type": "Outcome",
+                    "transaction_amount": 1250090,
+                    "transaction_logo": ""
+                },
+                {
+                    "transaction_id": "TRX0102",
+                    "transaction_date": "2019-01-02 00:00:00",
+                    "transaction_description": "Gaji Bulan Januari",
+                    "transaction_category": "Payroll",
+                    "transaction_type": "Income",
+                    "transaction_amount": 80205000,
+                    "transaction_logo": ""
+                },
+                {
+                    "transaction_id": "TRX0103",
+                    "transaction_date": "2019-01-02 00:00:00",
+                    "transaction_description": "Token Listrik",
+                    "transaction_category": "Bill",
+                    "transaction_type": "Outcome",
+                    "transaction_amount": 402500,
+                    "transaction_logo": ""
+                },
+                {
+                    "transaction_id": "TRX0104",
+                    "transaction_date": "2019-01-03 00:00:00",
+                    "transaction_description": "Bensin",
+                    "transaction_category": "Transportation",
+                    "transaction_type": "Outcome",
+                    "transaction_amount": 300000,
+                    "transaction_logo": ""
+                },
+                {
+                    "transaction_id": "TRX0105",
+                    "transaction_date": "2019-01-10 00:00:00",
+                    "transaction_description": "Penjualan Emas",
+                    "transaction_category": "Investment",
+                    "transaction_type": "Income",
+                    "transaction_amount": 800520,
+                    "transaction_logo": ""
+                },
+                {
+                    "transaction_id": "TRX0106",
+                    "transaction_date": "2019-01-15 00:00:00",
+                    "transaction_description": "Pembayaran Internet",
+                    "transaction_category": "Bill",
+                    "transaction_type": "Outcome",
+                    "transaction_amount": 300000,
+                    "transaction_logo": ""
+                }
+            ]
+        },
+        {
+            "transactions_id": "TRXS2",
+            "transactions_year": "2019",
+            "transactions_month": "02",
+            "total_income": 81054520,
+            "total_outcome": 1677510,
+            "total_balance": 79377010,
+            "transactions_list": [
+                {
+                    "transaction_id": "TRX0201",
+                    "transaction_date": "2019-02-01 00:00:00",
+                    "transaction_description": "Pembelian VGA RTX 3070",
+                    "transaction_category": "Electronics",
+                    "transaction_type": "Outcome",
+                    "transaction_amount": 7250000,
+                    "transaction_logo": ""
+                },
+                {
+                    "transaction_id": "TRX0202",
+                    "transaction_date": "2019-02-02 00:00:00",
+                    "transaction_description": "Gaji Bulan Februari",
+                    "transaction_category": "Payroll",
+                    "transaction_type": "Income",
+                    "transaction_amount": 80205000,
+                    "transaction_logo": ""
+                },
+                {
+                    "transaction_id": "TRX0203",
+                    "transaction_date": "2019-02-02 00:00:00",
+                    "transaction_description": "Token Listrik",
+                    "transaction_category": "Bill",
+                    "transaction_type": "Outcome",
+                    "transaction_amount": 402500,
+                    "transaction_logo": ""
+                },
+                {
+                    "transaction_id": "TRX0204",
+                    "transaction_date": "2019-02-03 00:00:00",
+                    "transaction_description": "Bensin",
+                    "transaction_category": "Transportation",
+                    "transaction_type": "Outcome",
+                    "transaction_amount": 300000,
+                    "transaction_logo": ""
+                },
+                {
+                    "transaction_id": "TRX0205",
+                    "transaction_date": "2019-02-10 00:00:00",
+                    "transaction_description": "Pindah Rumah",
+                    "transaction_category": "Service",
+                    "transaction_type": "Outcome",
+                    "transaction_amount": 2200000,
+                    "transaction_logo": ""
+                }
+            ]
+        }
+    ]
+}
