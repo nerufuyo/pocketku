@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return PopScope(
       canPop: false,
       child: Scaffold(
-        backgroundColor: background,
+        backgroundColor: white,
         body: SafeArea(
           child: Stack(
             children: [
@@ -79,24 +79,28 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            'Total Balance',
-            style: headline6.copyWith(color: secondary30),
+            'My Balance',
+            style: headline6.copyWith(color: primary30),
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Rp ${formattedCurrency(
+                'Rp${formattedCurrency(
                   int.parse(userData['current_balance'] ?? '0'),
                 )}',
-                style: headline1.copyWith(color: warning),
+                style: headline3.copyWith(
+                  color: primary50,
+                  fontSize: 36,
+                ),
               ),
               IconButton(
-                onPressed: () => showDetailBalance(context) ,
+                padding: const EdgeInsets.all(0),
+                onPressed: () => showDetailBalance(context),
                 icon: const Icon(
                   Iconsax.info_circle,
-                  color: warning,
+                  color: primary50,
                 ),
               ),
             ],
@@ -110,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black,
       builder: (context) => BottomSheetWidget(
         balance: 'Rp${formattedCurrency(
           int.parse(userData['current_balance'] ?? '0'),
@@ -123,7 +127,9 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: List.generate(
-            transactionData[0]['transactions_list'].length,
+            transactionData[0]['transactions_list'].length > 4
+                ? 4
+                : transactionData[0]['transactions_list'].length,
             (colIndex) => Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -47,12 +47,11 @@ class HeaderWidget extends StatelessWidget {
                           ? 'Welcome Back👋'
                           : formattedName(userData['user_name'] ?? 'No Name'),
                       style: index == 0
-                          ? subtitle2.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: secondary30,
+                          ? headline6.copyWith(
+                              color: primary30,
                             )
                           : headline4.copyWith(
-                              color: secondary50,
+                              color: primary50,
                             ),
                     ),
                   ),

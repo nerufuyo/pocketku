@@ -26,7 +26,7 @@ class IconTextWidget extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           title,
-          style: subtitle1.copyWith(color: color),
+          style: subtitle2.copyWith(color: color),
         ),
       ],
     );

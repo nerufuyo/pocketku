@@ -25,13 +25,13 @@ class _CustomIconButtonState extends State<CustomIconButton> {
         padding: const EdgeInsets.all(8),
         margin: const EdgeInsets.symmetric(horizontal: 4),
         decoration: BoxDecoration(
-          border: Border.all(color: secondary20),
+          border: Border.all(color: primary20),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Icon(
           widget.icon,
           size: 20,
-          color: white,
+          color: primary50,
         ),
       ),
     );

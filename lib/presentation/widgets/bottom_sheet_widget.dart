@@ -34,9 +34,10 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
             color: background,
             borderRadius: BorderRadius.circular(28),
           ),
-          padding: const EdgeInsets.symmetric(
-            vertical: 16,
-            horizontal: 20,
+          padding: const EdgeInsets.only(
+            bottom: 16,
+            left: 20,
+            right: 20,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +46,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
               topSliderButton(context),
               Text(
                 'Detail Balance',
-                style: headline2.copyWith(color: white),
+                style: headline3.copyWith(color: white),
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
@@ -54,7 +55,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
                   color: warning,
                   borderRadius: BorderRadius.circular(16),
                 ),
-                margin: const EdgeInsets.symmetric(vertical: 16),
+                margin: const EdgeInsets.only(bottom: 16, top: 4),
               ),
               customSubtitle(
                 title: 'Current Balance',
@@ -146,7 +147,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
         const SizedBox(width: 8),
         Text(
           title,
-          style: headline4.copyWith(color: white),
+          style: headline5.copyWith(color: white),
         ),
       ],
     );
@@ -154,14 +155,39 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
 
   Center topSliderButton(BuildContext context) {
     return Center(
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.125,
-        height: 8,
-        decoration: BoxDecoration(
-          color: primary40,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        margin: const EdgeInsets.only(top: 8, bottom: 24),
+      child: Stack(
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.175,
+              height: 14,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(.5),
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+              ),
+              margin: const EdgeInsets.only(bottom: 24),
+            ),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.075,
+              height: 4,
+              decoration: const BoxDecoration(
+                color: warning,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+              ),
+              margin: const EdgeInsets.only(bottom: 24),
+            ),
+          ),
+        ],
       ),
     );
   }
