@@ -1,0 +1,13 @@
+{
+    "message": "success",
+    "status": 200,
+    "data": {
+        "user_id": "PKAPP1",
+        "user_name": "Listyo Adi Pamungkas",
+        "user_email": "listyoap.work@pocketku.com",
+        "user_photo": "lib/assets/images/profile.jpg",
+        "current_balance": "10250000",
+        "income": "5000000",
+        "outcome": "2500000"
+    }
+}
